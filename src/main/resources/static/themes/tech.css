@@ -1,0 +1,558 @@
+/* ===== 科技风格 Tech/Sci-Fi Theme ===== */
+html[data-theme="tech"] {
+  --bg: #0d1117;
+  --bg-2: #0f1419;
+  --surface: #161b22;
+  --surface-2: #1c2129;
+  --surface-3: #1e2530;
+  --line: #2a3343;
+  --line-strong: #3d4a5f;
+  --text: #dce6f0;
+  --text-2: #b4c2d6;
+  --muted: #6b7c94;
+  --blue: #58a6ff;
+  --blue-2: #3d8ee6;
+  --blue-soft: #0d1f3c;
+  --green: #3fb950;
+  --green-soft: #0d2818;
+  --orange: #d29922;
+  --orange-soft: #271c0a;
+  --red: #f85149;
+  --red-soft: #2a1215;
+  --purple: #a371f7;
+  --purple-soft: #1b1530;
+  --gold: #d29922;
+  --sidebar: #0d1117;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", "Cascadia Code", "Consolas", "Inter", "Segoe UI", "Microsoft YaHei", monospace;
+}
+
+html[data-theme="tech"] body {
+  background: linear-gradient(180deg, #0d1117 0%, #0f1419 100%);
+}
+
+html[data-theme="tech"] .sidebar {
+  background: linear-gradient(180deg, #0a0e13 0%, #0d1117 100%);
+  border-right: 1px solid #1e2a3a;
+  box-shadow: 0 0 40px rgba(88, 166, 255, 0.04);
+}
+
+html[data-theme="tech"] .brand-mark {
+  background: linear-gradient(135deg, #58a6ff, #3fb950);
+  border-radius: 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.2);
+  font-family: "JetBrains Mono", monospace;
+}
+
+html[data-theme="tech"] .brand span {
+  color: #58a6ff;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.5px;
+}
+
+html[data-theme="tech"] .nav-button {
+  border-radius: 3px;
+  border-left: 2px solid transparent;
+  font-family: "JetBrains Mono", "SF Mono", "Consolas", monospace;
+  letter-spacing: 0.3px;
+}
+
+html[data-theme="tech"] .nav-button:hover,
+html[data-theme="tech"] .nav-button.active {
+  background: rgba(88, 166, 255, 0.1);
+  border-left-color: #58a6ff;
+  color: #58a6ff;
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+}
+
+html[data-theme="tech"] .btn {
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.15s ease;
+}
+
+html[data-theme="tech"] .btn:hover:not(:disabled) {
+  border-color: #58a6ff;
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.15);
+}
+
+html[data-theme="tech"] .btn-primary {
+  background: linear-gradient(135deg, #58a6ff, #3d8ee6);
+  border-color: rgba(88, 166, 255, 0.4);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.2);
+}
+
+html[data-theme="tech"] .btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3d8ee6, #58a6ff);
+  box-shadow: 0 0 24px rgba(88, 166, 255, 0.35);
+}
+
+html[data-theme="tech"] .btn-logout {
+  background: rgba(248, 81, 73, 0.15);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  color: #f85149;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+}
+
+html[data-theme="tech"] .btn-logout:hover:not(:disabled) {
+  background: rgba(248, 81, 73, 0.25);
+  border-color: rgba(248, 81, 73, 0.5);
+  box-shadow: 0 0 12px rgba(248, 81, 73, 0.15);
+}
+
+html[data-theme="tech"] .panel,
+html[data-theme="tech"] .metric-card,
+html[data-theme="tech"] .data-card,
+html[data-theme="tech"] .empty-state {
+  border-radius: 4px;
+  border: 1px solid #2a3343;
+  background: #161b22;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="tech"] .table-wrap {
+  border-radius: 4px;
+  border: 1px solid #2a3343;
+  background: #161b22;
+}
+
+html[data-theme="tech"] th {
+  background: #1c2129;
+  color: #58a6ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  border-bottom: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] tbody tr:hover {
+  background: #1a1f29;
+}
+
+html[data-theme="tech"] tbody tr td {
+  border-bottom: 1px solid #21283a;
+}
+
+html[data-theme="tech"] .tab.active {
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border-radius: 3px;
+  text-shadow: 0 0 6px rgba(88, 166, 255, 0.2);
+}
+
+html[data-theme="tech"] .tab {
+  border-radius: 3px;
+  border-color: #2a3343;
+  background: #161b22;
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .status-tag {
+  border-radius: 2px;
+  letter-spacing: 0.3px;
+}
+
+html[data-theme="tech"] .term-item,
+html[data-theme="tech"] .course-card,
+html[data-theme="tech"] .list-item {
+  border-radius: 4px;
+  border: 1px solid #2a3343;
+  background: #161b22;
+}
+
+html[data-theme="tech"] .modal {
+  border-radius: 4px;
+  border: 1px solid #2a3343;
+  background: #161b22;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="tech"] .modal-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="tech"] .modal-header {
+  border-bottom: 1px solid #2a3343;
+  background: #0d1117;
+}
+
+html[data-theme="tech"] .profile-avatar {
+  background: linear-gradient(135deg, #58a6ff, #a371f7);
+  border-radius: 3px;
+}
+
+html[data-theme="tech"] .avatar {
+  background: #1c2129;
+  color: #58a6ff;
+  border-radius: 3px;
+  border: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] .feature-icon {
+  background: linear-gradient(135deg, #58a6ff, #3fb950);
+  border-radius: 3px;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+}
+
+html[data-theme="tech"] input,
+html[data-theme="tech"] select,
+html[data-theme="tech"] textarea {
+  border-radius: 3px;
+  border: 1px solid #2a3343;
+  background: #0d1117;
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] input:focus,
+html[data-theme="tech"] select:focus,
+html[data-theme="tech"] textarea:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.12);
+}
+
+html[data-theme="tech"] .role-segment label:has(input:checked) {
+  background: #161b22;
+  color: #58a6ff;
+  box-shadow: inset 0 0 0 1px rgba(88, 166, 255, 0.3), 0 0 8px rgba(88, 166, 255, 0.1);
+}
+
+html[data-theme="tech"] .role-segment {
+  background: #0d1117;
+  border-color: #2a3343;
+}
+
+html[data-theme="tech"] .filter-grid {
+  border-radius: 4px;
+  border-color: #2a3343;
+  background: #1c2129;
+}
+
+html[data-theme="tech"] .time-segment {
+  border-radius: 4px;
+  border-color: #2a3343;
+  background: #1c2129;
+}
+
+html[data-theme="tech"] .progress {
+  background: #2a3343;
+}
+
+html[data-theme="tech"] .progress > span {
+  background: linear-gradient(90deg, #58a6ff, #3fb950);
+}
+
+html[data-theme="tech"] .bar-track {
+  background: #2a3343;
+}
+
+html[data-theme="tech"] .bar-fill {
+  background: linear-gradient(90deg, #58a6ff, #3fb950);
+}
+
+html[data-theme="tech"] .role-hero {
+  border-radius: 4px;
+  background: linear-gradient(135deg, #0d1117, #161b22);
+  border: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] .role-hero h2 {
+  color: #58a6ff;
+}
+
+html[data-theme="tech"] .metric-card strong {
+  color: #58a6ff;
+  font-family: "JetBrains Mono", "SF Mono", "Consolas", monospace;
+}
+
+html[data-theme="tech"] .ring {
+  background:
+    radial-gradient(circle at center, #161b22 57%, transparent 58%),
+    conic-gradient(#58a6ff var(--ring, 0%), #1c3048 0);
+  color: #58a6ff;
+}
+
+html[data-theme="tech"] .wide-meter {
+  background: #2a3343;
+}
+
+html[data-theme="tech"] .wide-meter i {
+  background: linear-gradient(90deg, #3fb950, #58a6ff);
+}
+
+html[data-theme="tech"] .profile-info-item {
+  border-radius: 4px;
+  border-color: #2a3343;
+  background: #1c2129;
+}
+
+html[data-theme="tech"] .status-panel-ok {
+  background: #0d2818;
+  border-left-color: #3fb950;
+}
+
+html[data-theme="tech"] .status-panel-warn {
+  background: #271c0a;
+  border-left-color: #d29922;
+}
+
+html[data-theme="tech"] .schedule-course {
+  border-left: 3px solid #58a6ff;
+  background: rgba(88, 166, 255, 0.08);
+  color: #8fbcff;
+}
+
+html[data-theme="tech"] .credit-ring {
+  border-radius: 4px;
+  background: #1c2129;
+  border: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] .gpa-line {
+  stroke: #58a6ff;
+}
+
+html[data-theme="tech"] .gpa-area {
+  fill: rgba(88, 166, 255, 0.08);
+}
+
+html[data-theme="tech"] .gpa-point circle {
+  stroke: #3fb950;
+  fill: #161b22;
+}
+
+html[data-theme="tech"] .login-view {
+  background:
+    linear-gradient(135deg, rgba(88, 166, 255, 0.04), transparent 42%),
+    linear-gradient(180deg, #0d1117 0%, #0f1419 100%);
+}
+
+html[data-theme="tech"] .login-product {
+  background:
+    linear-gradient(90deg, rgba(22, 27, 34, 0.98) 0%, rgba(13, 17, 23, 0.96) 58%, rgba(22, 27, 34, 0.98) 100%),
+    radial-gradient(circle at 62% 22%, rgba(88, 166, 255, 0.08), transparent 38%);
+}
+
+html[data-theme="tech"] .login-product .login-title h1 {
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .title-rule {
+  background: linear-gradient(90deg, #58a6ff, #3fb950);
+  height: 3px;
+  border-radius: 0;
+}
+
+html[data-theme="tech"] .login-panel {
+  background: #161b22;
+  border: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] .login-panel-wrap {
+  background: rgba(13, 17, 23, 0.95);
+  border-left: 1px solid #2a3343;
+}
+
+html[data-theme="tech"] .school-mark {
+  background: #58a6ff;
+  border-radius: 3px;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.2);
+}
+
+html[data-theme="tech"] .status-ring {
+  background:
+    radial-gradient(circle at center, #161b22 56%, transparent 57%),
+    conic-gradient(#58a6ff var(--value), #1c3048 0);
+}
+
+html[data-theme="tech"] .global-search {
+  border-radius: 3px;
+  border: 1px solid #2a3343;
+  background: #0d1117;
+}
+
+html[data-theme="tech"] .global-search input {
+  background: #0d1117;
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .course-meta span {
+  border-radius: 2px;
+  background: #1c2129;
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .score-input input {
+  border-radius: 3px;
+  border-color: #2a3343;
+  background: #0d1117;
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .toast {
+  border-radius: 3px;
+  border-color: #2a3343;
+  background: #161b22;
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .btn-sm {
+  border-radius: 3px;
+}
+
+html[data-theme="tech"] .sidebar-footer {
+  border-top-color: #1e2a3a;
+}
+
+html[data-theme="tech"] .brand {
+  border-bottom-color: #1e2a3a;
+}
+
+html[data-theme="tech"] .nav-section {
+  color: #58a6ff;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+html[data-theme="tech"] .nav-dot {
+  background: #58a6ff;
+  opacity: 0.5;
+  box-shadow: 0 0 6px rgba(88, 166, 255, 0.3);
+}
+
+html[data-theme="tech"] .breadcrumb {
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .page-title {
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .eyebrow {
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .profile-head {
+  border-bottom-color: #2a3343;
+}
+
+html[data-theme="tech"] .status-panel {
+  border-left-color: #2a3343;
+}
+
+html[data-theme="tech"] .login-card-note {
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .term-window strong {
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] button:focus-visible,
+html[data-theme="tech"] input:focus-visible,
+html[data-theme="tech"] select:focus-visible,
+html[data-theme="tech"] textarea:focus-visible,
+html[data-theme="tech"] .tab:focus-visible,
+html[data-theme="tech"] .nav-button:focus-visible {
+  outline-color: rgba(88, 166, 255, 0.4);
+}
+
+html[data-theme="tech"] .toast.success {
+  border-color: rgba(63, 185, 80, 0.3);
+  background: #0d2818;
+  color: #3fb950;
+}
+
+html[data-theme="tech"] .toast.error {
+  border-color: rgba(248, 81, 73, 0.3);
+  background: #2a1215;
+  color: #f85149;
+}
+
+html[data-theme="tech"] .toast.warn {
+  border-color: rgba(210, 153, 34, 0.3);
+  background: #271c0a;
+  color: #d29922;
+}
+
+html[data-theme="tech"] .message {
+  color: #f85149;
+}
+
+html[data-theme="tech"] .login-help {
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .empty-state {
+  color: #6b7c94;
+}
+
+/* ===== Tech Login Page Illustrations ===== */
+html[data-theme="tech"] .illust-default,
+html[data-theme="tech"] .illust-anime {
+  display: none;
+}
+
+html[data-theme="tech"] .illust-tech {
+  display: block;
+}
+
+html[data-theme="tech"] .login-illustration::before {
+  background: linear-gradient(135deg, rgba(13, 31, 60, 0.82), rgba(13, 17, 23, 0.58));
+  border-color: rgba(88, 166, 255, 0.15);
+}
+
+html[data-theme="tech"] .login-product .login-title h1 {
+  color: #dce6f0;
+}
+
+html[data-theme="tech"] .login-product .login-title p {
+  color: #6b7c94;
+}
+
+html[data-theme="tech"] .title-rule {
+  background: linear-gradient(90deg, #58a6ff, #3fb950);
+  height: 3px;
+  border-radius: 0;
+}
+
+html[data-theme="tech"] .feature-icon {
+  background: linear-gradient(135deg, #58a6ff, #3fb950);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.15);
+}
+
+html[data-theme="tech"] .login-notice-dot {
+  background: #58a6ff;
+  box-shadow: 0 0 6px rgba(88, 166, 255, 0.3);
+}
+
+html[data-theme="tech"] .school-mark {
+  background: linear-gradient(135deg, #0d1117, #58a6ff);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.2);
+}
+
+html[data-theme="tech"] .campus-card,
+html[data-theme="tech"] .campus-table {
+  background: rgba(22, 27, 34, 0.86);
+  border-color: #2a3343;
+}
+
+html[data-theme="tech"] .login-announcements .campus-card {
+  background: rgba(22, 27, 34, 0.86);
+  border-color: #2a3343;
+}
+
+html[data-theme="tech"] .campus-card.current-term-card {
+  background:
+    linear-gradient(145deg, rgba(13, 17, 23, 0.98), rgba(13, 31, 60, 0.98)),
+    linear-gradient(135deg, rgba(88, 166, 255, 0.04), transparent);
+  border-color: rgba(88, 166, 255, 0.12);
+}

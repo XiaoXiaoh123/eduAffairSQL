@@ -7,7 +7,7 @@
 - 后端：Java 17、Spring Boot 3.3.5、Spring MVC、MyBatis
 - 数据库：MySQL 8.x
 - 缓存：Spring Data Redis，可通过环境变量关闭
-- 前端：原生 HTML、CSS、JavaScript 单页应用
+- 前端：原生 HTML、CSS、JavaScript 单页应用，支持多套 UI 主题切换
 - 构建：Maven
 
 ## 项目结构
@@ -35,10 +35,26 @@
         └── resources/
             ├── application.yml
             └── static/
-                ├── index.html
-                ├── app.js
-                └── styles.css
+                ├── index.html       # HTML 壳，加载主题样式与脚本
+                ├── app.js            # 单页应用主逻辑（路由、渲染、API）
+                ├── styles.css        # 基础样式 + 默认「商务绿」主题变量
+                ├── theme.js          # 主题管理器（持久化、切换、初始化）
+                └── themes/
+                    ├── anime.css     # 二次元动漫风格主题
+                    └── tech.css      # 科技 / 赛博风格主题
 ```
+
+## 主题系统
+
+系统内置三套 UI 主题，教师和学生可在侧边栏「系统设置」中切换，偏好保存在浏览器本地存储中。
+
+| 主题 | CSS 文件 | 关键词 |
+| --- | --- | --- |
+| 商务绿（默认） | `styles.css` — `:root` 变量 | 绿色系、稳重、商务 |
+| 二次元 | `themes/anime.css` | 暖粉紫色系、圆角、Q 版角色插图 |
+| 科技感 | `themes/tech.css` | 暗色背景、霓虹蓝绿、终端 HUD 插图 |
+
+主题通过 `html[data-theme]` 属性覆盖 CSS 自定义属性实现，无需刷新页面即可即时切换。
 
 ## 数据库说明
 

@@ -100,7 +100,8 @@ const navs = {
     ['teachingSchedule', '排课安排'],
     ['gradeEntry', '成绩登录'],
     ['noticeManage', '通知公告'],
-    ['profile', '个人信息']
+    ['profile', '个人信息'],
+    ['settings', '系统设置']
   ],
   student: [
     ['dashboard', '首页'],
@@ -108,7 +109,8 @@ const navs = {
     ['selectedCourses', '我的课表'],
     ['grades', '成绩总表'],
     ['noticeManage', '通知公告'],
-    ['profile', '个人信息']
+    ['profile', '个人信息'],
+    ['settings', '系统设置']
   ]
 };
 
@@ -128,7 +130,8 @@ const routeTitles = {
   gradeEntry: '成绩登录',
   courseSelect: '在线选课',
   selectedCourses: '我的课表',
-  grades: '成绩总表'
+  grades: '成绩总表',
+  settings: '系统设置'
 };
 
 const studentSelectedCreditRoutes = new Set(['courseSelect', 'selectedCourses', 'grades', 'noticeManage', 'profile']);
@@ -618,6 +621,7 @@ function selectedTermCredits() {
 function renderRoute() {
   if (state.route === 'dashboard') return renderDashboard();
   if (state.route === 'profile') return renderProfile();
+  if (state.route === 'settings') return renderSettings();
   if (state.user.role === 'admin') return renderAdminRoute();
   if (state.user.role === 'teacher') return renderTeacherRoute();
   if (state.user.role === 'student') return renderStudentRoute();
@@ -644,6 +648,44 @@ function gradeDistribution(distribution = {}) {
           </div>
         `;
       }).join('')}
+    </div>
+  `;
+}
+
+function renderSettings() {
+  const current = Theme.current();
+  const themes = Theme.list();
+  return `
+    <div class="page-grid">
+      <section class="panel">
+        <div class="panel-header"><div><h2>界面风格</h2><p>选择你喜欢的界面风格，设置会保存在本地，下次登录自动生效。</p></div></div>
+        <div class="settings-theme-grid">
+          ${themes.map(function (t) {
+            const isActive = t.id === current;
+            const previewClass = 'theme-preview theme-preview-' + t.id;
+            return `
+              <button class="theme-card ${isActive ? 'theme-card-active' : ''}" data-action="theme-select" data-theme="${t.id}">
+                <div class="${previewClass}">
+                  <div class="theme-preview-sidebar"></div>
+                  <div class="theme-preview-main">
+                    <div class="theme-preview-bar"></div>
+                    <div class="theme-preview-blocks">
+                      <div class="theme-preview-block"></div>
+                      <div class="theme-preview-block"></div>
+                      <div class="theme-preview-block"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="theme-card-info">
+                  <strong>${t.icon} ${t.name}</strong>
+                  <p>${t.desc}</p>
+                </div>
+                ${isActive ? '<span class="theme-check">&#10003; 当前使用</span>' : ''}
+              </button>
+            `;
+          }).join('')}
+        </div>
+      </section>
     </div>
   `;
 }
@@ -2044,6 +2086,10 @@ document.addEventListener('click', async (event) => {
       state.routeData.teacherRosterData = await api(`/api/teacher/roster?offeringId=${encodeURIComponent(target.dataset.id)}`);
       state.modal = renderTeacherRosterModal(target.dataset.id);
       renderShell();
+    } else if (action === 'theme-select') {
+      Theme.apply(target.dataset.theme);
+      renderShell();
+      toast('界面风格已切换为 ' + Theme.info(target.dataset.theme).name, 'success');
     } else if (action === 'dashboard-go') {
       state.route = target.dataset.route;
       localStorage.setItem('course-ui-route', state.route);
@@ -2261,20 +2307,36 @@ function loginView() {
           <span class="title-rule"></span>
         </div>
         <div class="login-illustration" aria-hidden="true">
-          <div class="campus-building">
-            <span></span><span></span><span></span><span></span>
+          <div class="illust-default">
+            <div class="campus-building"><span></span><span></span><span></span><span></span></div>
+            <div class="screen-card"><div class="screen-top"></div><div class="screen-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+            <div class="cap-shape"></div><div class="book-stack"></div>
+            <div class="orbit-icon orbit-calendar">□</div><div class="orbit-icon orbit-chart">▥</div>
           </div>
-          <div class="screen-card">
-            <div class="screen-top"></div>
-            <div class="screen-grid">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
+          <div class="illust-anime">
+            <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="ag1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffb8c6"/><stop offset="100%" stop-color="#ffd1dc"/></linearGradient></defs>
+              <circle cx="380" cy="60" r="36" fill="#ffe0ec" opacity="0.7"/><circle cx="430" cy="100" r="24" fill="#ffe8f0" opacity="0.6"/><circle cx="340" cy="120" r="20" fill="#fff0f5" opacity="0.5"/>
+              <g transform="translate(260, 140)"><ellipse cx="0" cy="14" rx="52" ry="58" fill="url(#ag1)"/><ellipse cx="0" cy="58" rx="64" ry="40" fill="#ffe8ee"/><circle cx="-14" cy="6" r="11" fill="#fff"/><circle cx="14" cy="6" r="11" fill="#fff"/><circle cx="-12" cy="8" r="6" fill="#3d2433"/><circle cx="16" cy="8" r="6" fill="#3d2433"/><circle cx="-10" cy="5" r="2" fill="#fff"/><circle cx="18" cy="5" r="2" fill="#fff"/><ellipse cx="-12" cy="20" rx="3" ry="1.5" fill="#e8a0b0"/><ellipse cx="16" cy="20" rx="3" ry="1.5" fill="#e8a0b0"/><path d="M-4 16 Q0 22 4 16" stroke="#c96070" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="28" rx="16" ry="10" fill="#ffcdd8"/><circle cx="-28" cy="-16" r="8" fill="#ffe0ec"/><circle cx="-22" cy="-10" r="5" fill="#ffd1dc"/><circle cx="28" cy="-16" r="8" fill="#ffe0ec"/><circle cx="34" cy="-10" r="5" fill="#ffd1dc"/><rect x="-20" y="42" width="40" height="52" rx="14" fill="#fff0f5"/><line x1="-9" y1="44" x2="-9" y2="68" stroke="#ffd1dc" stroke-width="1.2"/><line x1="9" y1="44" x2="9" y2="68" stroke="#ffd1dc" stroke-width="1.2"/></g>
+              <text x="52" y="58" font-size="20" fill="#e8a0b0">✦</text><text x="82" y="108" font-size="14" fill="#ffb8c6">✧</text><text x="420" y="180" font-size="18" fill="#ffd1dc">✦</text><text x="170" y="170" font-size="12" fill="#ffe0ec">✧</text>
+              <g transform="translate(80, 250)"><rect x="0" y="0" width="200" height="10" rx="5" fill="#ffb8c6" opacity="0.5"/><rect x="30" y="-18" width="140" height="10" rx="5" fill="#ffd1dc" opacity="0.5"/><rect x="50" y="-36" width="100" height="10" rx="5" fill="#ffe0ec" opacity="0.5"/></g>
+              <text x="110" y="90" font-size="60" dominant-baseline="central" fill="#ffe0ec" opacity="0.4">🌸</text>
+              <text x="440" y="260" font-size="40" dominant-baseline="central" fill="#ffd1dc" opacity="0.3">🌸</text>
+            </svg>
           </div>
-          <div class="cap-shape"></div>
-          <div class="book-stack"></div>
-          <div class="orbit-icon orbit-calendar">□</div>
-          <div class="orbit-icon orbit-chart">▥</div>
+          <div class="illust-tech">
+            <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="tg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0d1f3c"/><stop offset="100%" stop-color="#0d1117"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <rect width="520" height="320" rx="16" fill="url(#tg1)" stroke="#1e2a3a" stroke-width="0.5"/>
+              <g opacity="0.12"><line x1="20" y1="40" x2="500" y2="40" stroke="#58a6ff" stroke-width="0.6"/><line x1="20" y1="60" x2="500" y2="60" stroke="#3fb950" stroke-width="0.6"/><line x1="20" y1="80" x2="500" y2="80" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="100" x2="500" y2="100" stroke="#3fb950" stroke-width="0.5"/><line x1="20" y1="120" x2="500" y2="120" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="140" x2="500" y2="140" stroke="#3fb950" stroke-width="0.5"/><line x1="20" y1="160" x2="500" y2="160" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="180" x2="500" y2="180" stroke="#3fb950" stroke-width="0.5"/><line x1="20" y1="200" x2="500" y2="200" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="220" x2="500" y2="220" stroke="#3fb950" stroke-width="0.5"/><line x1="20" y1="240" x2="500" y2="240" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="260" x2="500" y2="260" stroke="#3fb950" stroke-width="0.5"/><line x1="20" y1="280" x2="500" y2="280" stroke="#58a6ff" stroke-width="0.4"/><line x1="20" y1="300" x2="500" y2="300" stroke="#3fb950" stroke-width="0.5"/></g>
+              <g opacity="0.25"><circle cx="60" cy="60" r="1.5" fill="#58a6ff"/><circle cx="120" cy="100" r="1" fill="#58a6ff"/><circle cx="90" cy="140" r="1.5" fill="#3fb950"/><circle cx="160" cy="60" r="1" fill="#3fb950"/><circle cx="200" cy="120" r="1.5" fill="#58a6ff"/><circle cx="260" cy="80" r="1" fill="#58a6ff"/><circle cx="320" cy="140" r="1.5" fill="#3fb950"/><circle cx="380" cy="60" r="1" fill="#58a6ff"/><circle cx="440" cy="100" r="1.5" fill="#3fb950"/><circle cx="180" cy="200" r="1" fill="#58a6ff"/><circle cx="300" cy="220" r="1.5" fill="#58a6ff"/><circle cx="420" cy="200" r="1" fill="#3fb950"/></g>
+              <g transform="translate(30, 30)"><rect x="0" y="0" width="320" height="170" rx="6" fill="#0d1117" stroke="#2a3343" stroke-width="1.2"/><rect x="0" y="0" width="320" height="28" rx="6" fill="#161b22"/><circle cx="12" cy="14" r="4.5" fill="#f85149"/><circle cx="24" cy="14" r="4.5" fill="#d29922"/><circle cx="36" cy="14" r="4.5" fill="#3fb950"/><text x="154" y="18" font-family="monospace" font-size="10" fill="#6b7c94" text-anchor="middle">terminal — bash</text><text x="12" y="52" font-family="monospace" font-size="12" fill="#58a6ff">$</text><text x="32" y="52" font-family="monospace" font-size="12" fill="#dce6f0">./deploy.sh --env prod</text><text x="12" y="74" font-family="monospace" font-size="11" fill="#3fb950">✓</text><text x="32" y="74" font-family="monospace" font-size="11" fill="#6b7c94">build completed in 2.3s</text><text x="12" y="96" font-family="monospace" font-size="12" fill="#58a6ff">$</text><text x="32" y="96" font-family="monospace" font-size="12" fill="#dce6f0">kubectl get pods</text><text x="12" y="118" font-family="monospace" font-size="11" fill="#6b7c94">NAME</text><text x="120" y="118" font-family="monospace" font-size="11" fill="#6b7c94">READY</text><text x="220" y="118" font-family="monospace" font-size="11" fill="#6b7c94">STATUS</text><text x="12" y="138" font-family="monospace" font-size="11" fill="#dce6f0">api-svc</text><text x="120" y="138" font-family="monospace" font-size="11" fill="#3fb950">1/1</text><text x="220" y="138" font-family="monospace" font-size="11" fill="#3fb950">Running</text><text x="12" y="158" font-family="monospace" font-size="12" fill="#58a6ff">$</text><text x="32" y="158" font-family="monospace" font-size="12" fill="#6b7c94">_</text></g>
+              <g transform="translate(390, 38)"><rect x="0" y="0" width="60" height="46" rx="4" fill="#0d1f3c" stroke="#58a6ff" stroke-width="1.2" filter="url(#glow)"/><text x="30" y="18" font-family="monospace" font-size="10" fill="#58a6ff" text-anchor="middle">↑ 2.4</text><text x="30" y="38" font-family="monospace" font-size="8" fill="#6b7c94" text-anchor="middle">GB/s</text></g>
+              <g transform="translate(390, 100)"><rect x="0" y="0" width="60" height="46" rx="4" fill="#0d2818" stroke="#3fb950" stroke-width="1.2" filter="url(#glow)"/><text x="30" y="18" font-family="monospace" font-size="10" fill="#3fb950" text-anchor="middle">● ON</text><text x="30" y="38" font-family="monospace" font-size="8" fill="#6b7c94" text-anchor="middle">secure</text></g>
+              <g transform="translate(390, 168)"><rect x="0" y="0" width="60" height="46" rx="4" fill="#1c3048" stroke="#2a3343" stroke-width="1.2"/><text x="30" y="18" font-family="monospace" font-size="10" fill="#dce6f0" text-anchor="middle">98.2</text><text x="30" y="38" font-family="monospace" font-size="8" fill="#6b7c94" text-anchor="middle">score</text></g>
+              <g transform="translate(360, 250)"><rect x="0" y="0" width="130" height="38" rx="4" fill="#0d1117" stroke="#2a3343" stroke-width="1"/><text x="12" y="12" font-family="monospace" font-size="10" fill="#6b7c94">hash</text><text x="12" y="30" font-family="monospace" font-size="11" fill="#58a6ff">7f3a</text><text x="58" y="30" font-family="monospace" font-size="11" fill="#dce6f0">9e1c</text><text x="98" y="30" font-family="monospace" font-size="11" fill="#3fb950">b4d2</text></g>
+            </svg>
+          </div>
         </div>
         <div class="campus-panel login-cards">
           <button class="campus-card current-term-card" type="button" data-action="login-required">
@@ -2360,7 +2422,7 @@ function renderShell() {
             <button class="btn notice-button" data-action="notice">通知<span>${number((state.catalog?.notices || []).length)}</span></button>
           </div>
         </header>
-        ${state.route === 'dashboard' ? '' : termStrip()}
+        ${(state.route === 'dashboard' || state.route === 'settings') ? '' : termStrip()}
         ${renderRoute()}
       </main>
     </div>
