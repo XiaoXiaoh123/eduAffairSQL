@@ -2314,15 +2314,7 @@ function loginView() {
             <div class="orbit-icon orbit-calendar">□</div><div class="orbit-icon orbit-chart">▥</div>
           </div>
           <div class="illust-anime">
-            <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
-              <defs><linearGradient id="ag1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffb8c6"/><stop offset="100%" stop-color="#ffd1dc"/></linearGradient></defs>
-              <circle cx="380" cy="60" r="36" fill="#ffe0ec" opacity="0.7"/><circle cx="430" cy="100" r="24" fill="#ffe8f0" opacity="0.6"/><circle cx="340" cy="120" r="20" fill="#fff0f5" opacity="0.5"/>
-              <g transform="translate(260, 140)"><ellipse cx="0" cy="14" rx="52" ry="58" fill="url(#ag1)"/><ellipse cx="0" cy="58" rx="64" ry="40" fill="#ffe8ee"/><circle cx="-14" cy="6" r="11" fill="#fff"/><circle cx="14" cy="6" r="11" fill="#fff"/><circle cx="-12" cy="8" r="6" fill="#3d2433"/><circle cx="16" cy="8" r="6" fill="#3d2433"/><circle cx="-10" cy="5" r="2" fill="#fff"/><circle cx="18" cy="5" r="2" fill="#fff"/><ellipse cx="-12" cy="20" rx="3" ry="1.5" fill="#e8a0b0"/><ellipse cx="16" cy="20" rx="3" ry="1.5" fill="#e8a0b0"/><path d="M-4 16 Q0 22 4 16" stroke="#c96070" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="28" rx="16" ry="10" fill="#ffcdd8"/><circle cx="-28" cy="-16" r="8" fill="#ffe0ec"/><circle cx="-22" cy="-10" r="5" fill="#ffd1dc"/><circle cx="28" cy="-16" r="8" fill="#ffe0ec"/><circle cx="34" cy="-10" r="5" fill="#ffd1dc"/><rect x="-20" y="42" width="40" height="52" rx="14" fill="#fff0f5"/><line x1="-9" y1="44" x2="-9" y2="68" stroke="#ffd1dc" stroke-width="1.2"/><line x1="9" y1="44" x2="9" y2="68" stroke="#ffd1dc" stroke-width="1.2"/></g>
-              <text x="52" y="58" font-size="20" fill="#e8a0b0">✦</text><text x="82" y="108" font-size="14" fill="#ffb8c6">✧</text><text x="420" y="180" font-size="18" fill="#ffd1dc">✦</text><text x="170" y="170" font-size="12" fill="#ffe0ec">✧</text>
-              <g transform="translate(80, 250)"><rect x="0" y="0" width="200" height="10" rx="5" fill="#ffb8c6" opacity="0.5"/><rect x="30" y="-18" width="140" height="10" rx="5" fill="#ffd1dc" opacity="0.5"/><rect x="50" y="-36" width="100" height="10" rx="5" fill="#ffe0ec" opacity="0.5"/></g>
-              <text x="110" y="90" font-size="60" dominant-baseline="central" fill="#ffe0ec" opacity="0.4">🌸</text>
-              <text x="440" y="260" font-size="40" dominant-baseline="central" fill="#ffd1dc" opacity="0.3">🌸</text>
-            </svg>
+            <img class="illust-img" src="images/anime-character.png" alt="Anime character" />
           </div>
           <div class="illust-tech">
             <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">

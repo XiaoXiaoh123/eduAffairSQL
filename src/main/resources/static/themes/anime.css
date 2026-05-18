@@ -323,6 +323,33 @@ html[data-theme="anime"] .illust-anime {
   display: block;
 }
 
+/* Override the landscape-oriented default sizing with a taller container
+   that fits square-ish character images and crops desk via cover */
+html[data-theme="anime"] .login-illustration {
+  width: min(48vw, 560px);
+  height: clamp(420px, 48vh, 560px);
+  top: 0;
+  transform: none;
+}
+
+html[data-theme="anime"] .illust-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 10%;
+  -webkit-mask-image: radial-gradient(ellipse 70% 64% at 50% 38%, black 52%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 64% at 50% 38%, black 52%, transparent 78%);
+}
+
+/* Thin edge vignette: masks residual color mismatch between image bg and page bg */
+html[data-theme="anime"] .illust-anime::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 68% 62% at 50% 38%, transparent 58%, rgba(254, 245, 249, 0.82) 82%);
+}
+
 html[data-theme="anime"] .login-illustration::before {
   background: linear-gradient(135deg, rgba(253, 228, 238, 0.82), rgba(255, 252, 253, 0.58));
   border-color: rgba(255, 220, 235, 0.72);
